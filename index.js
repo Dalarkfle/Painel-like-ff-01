@@ -21,16 +21,16 @@ function enviarLike() {
       return response.json();
     })
     .then(data => {
-      if (data.success || data.status === "ok") {
+      if (data.success || data.status === "ok" || data.includes === "sucesso") {
         resultado.textContent = "Like enviado com sucesso!";
         resultado.style.color = "#00ffae";
       } else {
-        resultado.textContent = "A API respondeu, mas não confirmou o envio.";
+        resultado.textContent = "A API respondeu, mas não confirmou o envio do like.";
         resultado.style.color = "orange";
       }
     })
     .catch(error => {
-      console.error("Erro:", error);
+      console.error("Erro ao enviar like:", error);
       resultado.textContent = "Erro ao enviar o like. Verifique se a API está online.";
       resultado.style.color = "red";
     });
