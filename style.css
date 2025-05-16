@@ -1,35 +1,40 @@
-body {
+* {
   margin: 0;
   padding: 0;
-  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+  color: #fff;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
-.painel {
-  background-color: #1e1e2f;
+.container {
+  background-color: #2a2a2a;
   padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
   width: 90%;
   max-width: 400px;
+  text-align: center;
 }
 
-.painel h1 {
-  color: #00ffae;
+h1 {
   margin-bottom: 20px;
+  color: #00ffae;
 }
 
-input {
-  width: 90%;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
   margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
   outline: none;
   font-size: 16px;
 }
@@ -39,39 +44,18 @@ button {
   color: #000;
   border: none;
   padding: 12px 20px;
+  font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease;
+  transition: 0.3s ease;
+  width: 100%;
 }
 
 button:hover {
-  background-color: #00e6a0;
+  background-color: #00d394;
 }
 
 #resultado {
   margin-top: 15px;
   font-weight: bold;
-}
-
-.whatsapp-button {
-  display: inline-block;
-  margin-top: 20px;
-  background-color: #25D366;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.whatsapp-button:hover {
-  background-color: #1ebc59;
-}
-
-footer {
-  margin-top: 25px;
-  color: #888;
-  font-size: 14px;
 }
