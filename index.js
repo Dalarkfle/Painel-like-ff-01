@@ -1,21 +1,37 @@
 function enviarLike() {
-  const uid = document.getElementById('uid').value;
-  const resultado = document.getElementById('resultado');
+  const uid = document.getElementById("uid").value.trim();
+  const resultado = document.getElementById("resultado");
 
-  if (!uid) {
-    resultado.textContent = 'Digite um UID válido.';
+  if (!uid || isNaN(uid) || uid.length < 5) {
+    resultado.textContent = "UID inválido. Verifique e tente novamente.";
+    resultado.style.color = "red";
     return;
   }
 
-  resultado.textContent = 'Enviando like...';
+  resultado.textContent = "Enviando like...";
+  resultado.style.color = "#fff";
 
-  fetch(`http://wings.primaryhost.shop:2464/like?uid=${uid}`)
-    .then(res => res.text())
-    .then(data => {
-      resultado.textContent = `Resposta: ${data}`;
+  const url = `http://wings.primaryhost.shop:2464/like?uid=${uid}`;
+
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Erro HTTP: ${response.status}`);
+      }
+      return response.json();
     })
-    .catch(err => {
-      resultado.textContent = 'Erro ao enviar like.';
-      console.error(err);
+    .then(data => {
+      if (data.success || data.status === "ok" || data.includes === "sucesso") {
+        resultado.textContent = "Like enviado com sucesso!";
+        resultado.style.color = "#00ffae";
+      } else {
+        resultado.textContent = "A API respondeu, mas não confirmou o envio do like.";
+        resultado.style.color = "orange";
+      }
+    })
+    .catch(error => {
+      console.error("Erro ao enviar like:", error);
+      resultado.textContent = "Erro ao enviar o like. Verifique se a API está online.";
+      resultado.style.color = "red";
     });
 }
